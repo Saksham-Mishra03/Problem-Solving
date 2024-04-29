@@ -61,6 +61,27 @@ public:
 
 /****************************************************************************/
 
+/************************tabulation*************************/
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int n = size(nums);
+        vector<int> dp(n, 10001);
+        dp[n - 1] = 0;  
+        for(int i = n - 2; i >= 0; i--) {
+            for(int j = 1+i; j <= min(n-1, i+nums[i]); j++) {
+                dp[i] = min(dp[i],1+dp[j]); 
+            }
+        }
+
+	return dp[0];
+    }
+};
+
+//TC: O(N2)
+//space: O(n)
+/*************************************************************/
+
 
 
 
